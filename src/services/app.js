@@ -1,10 +1,15 @@
+let url = ''
+
+process.env.ENV === 'test'
+  ? url = 'http://localhost:3001/api/'
+  : url = 'http://localhost:3001/api/'
 
 let token = ''
 
 const setToken = newToken => { token = newToken }
 
 const login = ({ username, password }) => {
-  const req = fetch('http://localhost:3001/api/login', {
+  const req = fetch(`${url}login`, {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json'
