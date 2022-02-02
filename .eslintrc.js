@@ -2,7 +2,8 @@ module.exports = {
   env: {
     browser: true,
     es2021: true,
-    node: true
+    node: true,
+    'jest/globals': true
   },
   extends: [
     'plugin:react/recommended',
@@ -16,11 +17,17 @@ module.exports = {
     sourceType: 'module'
   },
   plugins: [
-    'react'
+    'react',
+    'jest'
   ],
   rules: {
     'react/react-in-jsx-scope': 'off',
     'react/prop-types': 'off',
     'react/new-cap': 'off'
+  },
+  globals: {
+    shallow: true,
+    render: true,
+    mount: true
   }
 }
