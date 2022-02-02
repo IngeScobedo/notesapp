@@ -1,11 +1,13 @@
+import Login from './login/Login'
+import Notes from './notes/Notes'
 
 const App = () => {
-
-    return (
+  return (
         <div className="notes-app-container">
-            <h1>Notes App</h1>
+            <Login />
+            <Notes />
         </div>
-    )
-    }
+  )
+}
 
 export default App
