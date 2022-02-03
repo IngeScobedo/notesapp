@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react'
-import notesService from '../services/app'
+import noteService from '../services/app'
 import Login from './login/Login'
 import Notes from './notes/Notes'
 
@@ -9,9 +9,9 @@ const App = () => {
   useEffect(() => {
     const loggedUserJSON = window.localStorage.getItem('loggedNoteAppUser')
     if (loggedUserJSON) {
-      const user = JSON.parse(loggedUserJSON)
-      setUser(user)
-      notesService.setToken(user.token)
+      const token = JSON.parse(loggedUserJSON)
+      setUser(token)
+      noteService.setToken(token)
     }
   }, [])
 

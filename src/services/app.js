@@ -23,7 +23,7 @@ const login = ({ username, password }) => {
 }
 
 const createAccount = ({ username, name, email, password }) => {
-  const req = fetch('http://localhost:3001/api/users', {
+  const req = fetch(`${url}users`, {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json'
@@ -38,8 +38,20 @@ const createAccount = ({ username, name, email, password }) => {
   return req.then(res => res.json())
 }
 
+const getNotes = (type) => {
+  const path = type === 'standard' ? 'notes' : 'wallet/notes'
+  const req = fetch(`${url}${path}`, {
+    method: 'GET',
+    headers: {
+      'Content-Type': 'application/json',
+      Authorization: token
+    }
+  })
+  return req.then(res => res.json())
+}
+
 const createNote = (note) => {
-  const req = fetch('http://localhost:3001/api/notes', {
+  const req = fetch(`${url}notes`, {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json',
@@ -54,5 +66,6 @@ export default {
   login,
   setToken,
   createAccount,
-  createNote
+  createNote,
+  getNotes
 }
