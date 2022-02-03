@@ -1,5 +1,6 @@
 import { useState } from 'react'
-import notesService from '../../services/app'
+import noteService from '../../services/app'
+import ConectWalletButton from './ConectWalletButton'
 
 const Login = () => {
   const [errorMessage, setErrorMessage] = useState('Please login')
@@ -11,10 +12,10 @@ const Login = () => {
       password: values.target.password.value
     }
 
-    notesService.login(loginValues)
+    noteService.login(loginValues)
       .then(loggedResponse => {
-        console.log(loggedResponse)
         if (loggedResponse.status === 200) {
+          localStorage.setItem('userType', 'standard')
           setErrorMessage(loggedResponse.message)
           localStorage.setItem('loggedNoteAppUser', JSON.stringify(loggedResponse.token))
           window.location.reload()
@@ -45,6 +46,9 @@ const Login = () => {
             />
             <button type='submit'>Login</button>
         </form>
+
+        <ConectWalletButton/>
+
       </>
   )
 }
