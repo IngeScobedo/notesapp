@@ -6,7 +6,7 @@ process.env.ENV === 'test'
 
 let token = ''
 
-const setToken = newToken => { token = newToken }
+const setToken = newToken => { token = `Bearer ${newToken}` }
 
 const login = ({ username, password }) => {
   const req = fetch(`${url}login`, {
@@ -55,7 +55,7 @@ const createNote = (note) => {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json',
-      Authorization: `Bearer ${token}`
+      Authorization: token
     },
     body: JSON.stringify(note)
   })
