@@ -5,7 +5,7 @@ import Notes from './notes/Notes'
 
 const App = () => {
   const [user, setUser] = useState(null)
-
+	console.log('hola')
   useEffect(() => {
     const loggedUserJSON = window.localStorage.getItem('loggedNoteAppUser')
     if (loggedUserJSON) {
